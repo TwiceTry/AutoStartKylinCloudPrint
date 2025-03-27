@@ -48,3 +48,5 @@ GenerateStartupScript.vbs
 
 简化麒麟云打印打印服务的配置和启动流程，减少用户手动操作。
 
+## 附
+### [麒麟云打印1.1.3版本服务端及客户端](https://pan.baidu.com/s/1B2554iMGwxDVTNcoRwg8ew?pwd=fgbr)
