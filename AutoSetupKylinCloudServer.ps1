@@ -168,7 +168,7 @@ function Capture-Window {
 
     $graphics.CopyFromScreen($bounds.Location, [Drawing.Point]::Empty, $bounds.size)
 
-    $bitmap.Save("C:\" +$rect.Left.ToString() + $rect.Top.ToString() + ".png") # 修改为您希望保存图片的位置
+    $bitmap.Save("C:\" + $rect.Left.ToString() + $rect.Top.ToString() + ".png") # 修改为您希望保存图片的位置
     $graphics.Dispose()
     $bitmap.Dispose()
 }
@@ -239,24 +239,22 @@ $startTime = [System.DateTime]::Now
 
 $targetClassName = "Qt5QWindowIcon" # 根据窗口类名查找窗口
 
-$exeName = "kylin-cloud-printer-server.exe" # 服务端程序名
-$BaseName = (Get-Item $exeName).BaseName # 进程名
 # 获取脚本所在目录
-if (-not $WorkingDirectory){
-if (-not $PSScriptRoot) {
-    $scriptPath = $MyInvocation.MyCommand.Path # 兼容PowerShell 2.0
-    if (-not $scriptPath) {
-        Write-Error "无法确定脚本路径。请确保脚本是从文件运行的。"
-        exit 1
+if (-not $WorkingDirectory) {
+    if (-not $PSScriptRoot) {
+        $scriptPath = $MyInvocation.MyCommand.Path # 兼容PowerShell 2.0
+        if (-not $scriptPath) {
+            Write-Error "无法确定脚本路径。请确保脚本是从文件运行的。"
+            exit 1
+        }
+        $scriptDirectory = Split-Path -Parent $scriptPath
     }
-    $scriptDirectory = Split-Path -Parent $scriptPath
+    else {
+        $scriptDirectory = $PSScriptRoot
+    }
 }
 else {
-    $scriptDirectory = $PSScriptRoot
-}
-}
-else {
-$scriptDirectory = $WorkingDirectory
+    $scriptDirectory = $WorkingDirectory
 }
 
 $workingDirectory = $scriptDirectory # 脚本所在目录作工作目录
